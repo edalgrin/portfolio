@@ -1,12 +1,14 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --pageBg: #f9f9f9;
+  --cardColor: #333333;
+  --cardBg: #ffffff;
+  --cardWrpColor: #333333;
+  --cardWrpBg: #ffe1cb;
+  --negative: 1;
+  @media (prefers-color-scheme: dark) {
+    --pageBg: #000000;
+    --cardColor: #ffffff;
+    --cardBg: #333333;
   }
 }
 
@@ -16,12 +18,18 @@ body {
   overflow-x: hidden;
 }
 
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--pageBg);
+  font-family: var(--quicksand);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-block: 5rem;
 }
 
 * {
@@ -35,8 +43,214 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.container {
+  display: grid;
+  gap: 1rem;
+  max-width: 1100px;
+  margin-inline: auto;
+
+  @media (min-width: 580px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 980px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .col {
+    display: flex;
+    container-type: inline-size;
+  }
+}
+
+.card {
+  --cardPadding: 0.625rem;
+  --cardBorderRadius: 1.875rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: var(--cardPadding);
+  border-radius: var(--cardBorderRadius);
+  color: var(--cardColor);
+  background-color: var(--cardBg);
+  border: 1px solid hsl(from var(--cardColor) h s calc(l + 70));
+
+  @container (min-width: 580px) {
+    flex-direction: row;
+  }
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 1.875rem;
+  color: var(--cardWrpColor);
+  background-color: var(--cardWrpBg);
+  padding: 1rem;
+  border-radius: calc(var(--cardBorderRadius) - var(--cardPadding));
+
+  @media (prefers-color-scheme: dark) {
+    background-color: hsl(from var(--cardWrpBg) h s calc(l - 20));
+  }
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  order: -1;
+
+  .card-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-weight: 600;
+    font-size: small;
+    text-transform: uppercase;
+  }
+
+  .card-bookmark {
+    width: 3rem;
+    aspect-ratio: 1;
+    display: inline-grid;
+    place-items: center;
+    border: none;
+    border-radius: 50%;
+    color: var(--cardColor);
+    background-color: var(--cardBg);
+    font-size: large;
+    cursor: pointer;
+
+    .card-icon {
+      position: absolute;
+      transform-origin: top;
+      will-change: scale;
+      transition: scale 0.15s ease-in-out;
+      scale: 0.8 0;
+
+      .bookmarked & {
+        transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 2);
+        scale: 1 1;
+      }
+    }
+  }
+}
+
+.card-body {
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  grid-template-areas:
+    "a a"
+    "b c";
+  .card-title {
+    font-size: x-large;
+  }
+  .card-subtitle {
+    grid-area: a;
+    font-weight: 600;
+    font-size: small;
+  }
+  .card-image {
+    clip-path: circle(50%);
+    width: 2.5rem;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+}
+
+.card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  list-style: none;
+
+  .card-tag {
+    border-radius: 0.375rem;
+    padding: 0.125rem 0.375rem;
+    border: 1px solid hsl(from currentcolor h s 60);
+    font-size: small;
+    font-weight: 500;
+  }
+}
+
+.card-info {
+  padding: 1rem;
+  margin-block-start: 0.625rem;
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.375rem;
+  grid-template-areas:
+    "a c"
+    "b c";
+
+  @container (min-width: 580px) {
+    margin-block-start: 0;
+    min-width: 250px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "a"
+      "b"
+      "c";
+  }
+
+  .card-location {
+    color: hsl(from currentcolor h s calc(l + 30));
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .card-salary {
+    font-size: large;
+    font-weight: 600;
+  }
+
+  .card-details {
+    grid-area: c;
+    font-size: large;
+    font-family: inherit;
+    font-weight: 400;
+    border-radius: calc(var(--cardBorderRadius) - var(--cardPadding));
+    padding-inline: 1rem;
+    height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    color: var(--cardBg);
+    background-color: var(--cardColor);
+
+    &.disabled {
+      background-color: hsl(from var(--cardColor) h s calc(l + 50));
+    }
+
+    @media (prefers-color-scheme: dark) {
+      --negative: -1;
+    }
+
+    @container (min-width: 580px) {
+      justify-content: center;
+    }
+  }
+}
+
+.card-button {
+  will-change: color, background-color, box-shadow;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--cardBg);
+    background-color: hsl(
+      from var(--cardColor) h s calc(l + 10 * var(--negative))
+    );
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem
+      hsl(from var(--cardColor) h s calc(l + 30 * var(--negative)));
   }
 }

@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Senior Frontend Engineerx",
+    "company": "BMW",
+    "companyLogo": "/logo-bmw.png",
+    "location": "Berlin, Germany",
+    "salary": "€80-100k",
+    "tags": ["Full time", "Senior level", "On site"],
+    "date": "21 Feb, 2025",
+    "bookmarked": false,
+    "colors": {
+      "color": "#333333",
+      "bg": "#cceeff"
+    },
+    "url": "#"
+  },
+  {
+    "title": "User Experience Engineer",
+    "company": "Google",
+    "companyLogo": "/logo-google.png",
+    "location": "San Francisco, CA",
+    "salary": "$180-200k",
+    "tags": ["Full time", "Mid-senior level", "On site", "Relocation"],
+    "date": "20 Feb, 2025",
+    "bookmarked": true,
+    "colors": {
+      "color": "#333333",
+      "bg": "#b2f7ef"
+    },
+    "url": "#"
+  },
+  {
+    "title": "Product Frontend Engineer",
+    "company": "Chanel",
+    "companyLogo": "/logo-chanel.png",
+    "location": "Paris, France",
+    "salary": "€30-50/h",
+    "tags": ["Part-time", "Project work", "Mid level", "Flexible schedule"],
+    "date": "10 Feb, 2025",
+    "bookmarked": false,
+    "colors": {
+      "color": "#333333",
+      "bg": "#fbeef5"
+    },
+    "url": "#"
+  },
+  {
+    "title": "Junior Front-End Engineer",
+    "company": "Facebook",
+    "companyLogo": "/logo-facebook.png",
+    "location": "Palo Alto, CA",
+    "salary": "$100-120k",
+    "tags": ["Full-time", "Junior level", "On site"],
+    "date": "18 Feb, 2025",
+    "bookmarked": false,
+    "colors": {
+      "color": "#FFFFFF",
+      "bg": "#072ac8"
+    },
+    "url": "#"
+  },
+  {
+    "title": "UX/UI Frontend Developer",
+    "company": "Nike",
+    "companyLogo": "/logo-nike.png",
+    "location": "London, UK",
+    "salary": "£70-100k",
+    "tags": ["Full-time", "Mid-Senior level", "Flexible schedule", "Remote"],
+    "date": "18 Feb, 2025",
+    "bookmarked": true,
+    "colors": {
+      "color": "#333333",
+      "bg": "#eaf4f4"
+    },
+    "url": "#"
+  },
+  {
+    "title": "Senior Product Engineer",
+    "company": "WWF",
+    "companyLogo": "/logo-wwf.png",
+    "location": "Zurich, Switzerland",
+    "salary": "€50-70/h",
+    "tags": ["Part-time", "Project work", "Remote"],
+    "date": "20 Feb, 2025",
+    "bookmarked": false,
+    "colors": {
+      "color": "#333333",
+      "bg": "#b7e4c7"
+    },
+    "url": "#"
+  }
+]
