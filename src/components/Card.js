@@ -15,7 +15,7 @@ const Card = ({ item }) => {
 
   return (
     <div
-      className="card"
+      className={classNames("card", bookmark && "bookmarked")}
       style={{
         "--cardWrpColor": item.colors?.color,
         "--cardWrpBg": item.colors?.bg,
@@ -48,11 +48,7 @@ const Card = ({ item }) => {
             title={ButtonBookmarkText}
             aria-label={ButtonBookmarkText}
             type="button"
-            className={classNames(
-              "card-button",
-              "card-bookmark",
-              bookmark && "bookmarked"
-            )}
+            className="card-button card-bookmark"
             onClick={() => {
               setBookmark(!bookmark);
             }}
