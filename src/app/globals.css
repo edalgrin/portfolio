@@ -261,3 +261,133 @@ a {
       hsl(from var(--cardColor) h s calc(l + 30 * var(--negative, 1)));
   }
 }
+
+/**/
+
+body {
+  background: linear-gradient(to top, #ffffff, #6dd5fa, #2980b9);
+  display: grid;
+  place-content: center;
+  height: 100vh;
+}
+
+.form {
+  --formBcBg: #f9a600;
+  display: flex;
+  //gap: 5px;
+
+  width: 1000px;
+  //height: 350px;
+
+  .form-barcode {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: var(--formBcBg);
+    padding: 16px;
+  }
+
+  .form-main {
+    //flex-grow: 1;
+    color: #182227;
+    background-color: white;
+    padding: 16px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    .form-head {
+      display: flex;
+      align-items: start;
+
+      .form-title {
+        font-size: 60px;
+        line-height: 1;
+      }
+    }
+
+    .form-airplane {
+      display: flex;
+      align-items: center;
+      margin-block-start: 16px;
+      font-weight: 700;
+      gap: 10px;
+
+      svg {
+        font-size: x-large;
+      }
+    }
+
+    .form-table {
+      text-align: left;
+      margin-block-start: 16px;
+      width: 100%;
+      border-collapse: collapse;
+      text-transform: uppercase;
+      --formTableColor: #a6a6a6;
+
+      th {
+        color: var(--formTableColor);
+        font-size: x-small;
+      }
+
+      td {
+        font-weight: 700;
+        font-size: small;
+        border-top: 1px solid var(--formTableColor);
+
+        &:not(:last-child) {
+          border-right: 1px solid var(--formTableColor);
+        }
+      }
+
+      th,
+      td {
+        padding-block: 10px;
+        &:not(:first-child) {
+          padding-inline-start: 10px;
+        }
+        &:not(:last-child) {
+          padding-inline-end: 10px;
+        }
+        &:last-child{
+          text-align: right;
+        }
+      }
+    }
+
+    .form-footer {
+      margin-block-start: 16px;
+      display: flex;
+      gap: 32px;
+
+      .form-qrcode {
+        height: 80px;
+      }
+
+      .form-privacy {
+        display: block;
+        margin-block-start: 10px;
+        font-size: x-small;
+      }
+    }
+  }
+
+  .form-border {
+    background-color: white;
+    margin-block: 14px;
+    border-block: 1px solid;
+    border-left: 4px dotted;
+    mix-blend-mode: lighten;
+  }
+
+  .form-side {
+    background-color: white;
+    border-radius: 15px;
+    padding: 16px;
+    min-width: 350px;
+  }
+
+  .form-head {
+    display: flex;
+    justify-content: space-between;
+  }
+}
