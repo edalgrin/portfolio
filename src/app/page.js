@@ -1,7 +1,7 @@
-import Form from "@/components/Form";
+import Airbnb from "@/components/Airbnb";
 
 export default function Home() {
   return (
-    <Form />
+    <Airbnb />
   );
 }
