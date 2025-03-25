@@ -9,7 +9,10 @@ import {
     IoSearchOutline,
     IoHomeOutline,
     IoStar,
-    IoHeartOutline
+    IoHeartOutline,
+    IoLogoFacebook,
+    IoLogoTwitter,
+    IoLogoInstagram,
 } from "react-icons/io5";
 
 const navCategories = [
@@ -76,9 +79,9 @@ const cards = [
         id: "1",
         title: "San Martino in Badia, Italia",
         rating: 5.0,
-        host: "Host: azienda specializzata",
+        host: "Hosted by a business",
         price: 336,
-        date: "12 - 17 Apr",
+        date: "Apr 12 - 17",
         images: [
             "https://picsum.photos/id/76/300.jpg",
             "https://picsum.photos/id/77/300.jpg",
@@ -89,9 +92,9 @@ const cards = [
         id: "2",
         title: "San Martino in Badia, Italia",
         rating: 5.0,
-        host: "Host: azienda specializzata",
+        host: "Hosted by a business",
         price: 336,
-        date: "12 - 17 Apr",
+        date: "Apr 12 - 17",
         images: [
             "https://picsum.photos/id/26/300.jpg",
             "https://picsum.photos/id/27/300.jpg",
@@ -102,9 +105,9 @@ const cards = [
         id: "3",
         title: "San Martino in Badia, Italia",
         rating: 5.0,
-        host: "Host: azienda specializzata",
+        host: "Hosted by a business",
         price: 336,
-        date: "12 - 17 Apr",
+        date: "Apr 12 - 17",
         images: [
             "https://picsum.photos/id/36/300.jpg",
             "https://picsum.photos/id/37/300.jpg",
@@ -115,29 +118,82 @@ const cards = [
         id: "4",
         title: "San Martino in Badia, Italia",
         rating: 5.0,
-        host: "Host: azienda specializzata",
+        host: "Hosted by a business",
         price: 336,
-        date: "12 - 17 Apr",
+        date: "Apr 12 - 17",
         images: [
             "https://picsum.photos/id/46/300.jpg",
             "https://picsum.photos/id/47/300.jpg",
             "https://picsum.photos/id/48/300.jpg",
         ],
     },
-    {
-        id: "5",
-        title: "San Martino in Badia, Italia",
-        rating: 5.0,
-        host: "Host: azienda specializzata",
-        price: 336,
-        date: "12 - 17 Apr",
-        images: [
-            "https://picsum.photos/id/56/300.jpg",
-            "https://picsum.photos/id/57/300.jpg",
-            "https://picsum.photos/id/58/300.jpg",
-        ],
-    },
 ];
+
+const navDestinations = [
+    {
+        tabTitle: "Popular", tabContent: [
+            { subtabTitle: "Canmore", subtabContent: "Condo rentals", subtabUrl: "#canmore" },
+            { subtabTitle: "Canmore", subtabContent: "Condo rentals", subtabUrl: "#canmore" },
+            { subtabTitle: "Canmore", subtabContent: "Condo rentals", subtabUrl: "#canmore" },
+            { subtabTitle: "Canmore", subtabContent: "Condo rentals", subtabUrl: "#canmore" },
+            { subtabTitle: "Canmore", subtabContent: "Condo rentals", subtabUrl: "#canmore" },
+            { subtabTitle: "Canmore", subtabContent: "Condo rentals", subtabUrl: "#canmore" },
+            { subtabTitle: "Canmore", subtabContent: "Condo rentals", subtabUrl: "#canmore" },
+            { subtabTitle: "Canmore", subtabContent: "Condo rentals", subtabUrl: "#canmore" },
+            { subtabTitle: "Canmore", subtabContent: "Condo rentals", subtabUrl: "#canmore" },
+            { subtabTitle: "Canmore", subtabContent: "Condo rentals", subtabUrl: "#canmore" },
+            { subtabTitle: "Canmore", subtabContent: "Condo rentals", subtabUrl: "#canmore" },
+            { subtabTitle: "Canmore", subtabContent: "Condo rentals", subtabUrl: "#canmore" },
+        ]
+    },
+    { tabTitle: "Arts & Culture", tabContent: [] },
+    { tabTitle: "Outdoors", tabContent: [] },
+    { tabTitle: "Mountain", tabContent: [] },
+    { tabTitle: "Beach", tabContent: [] },
+    { tabTitle: "Unique stays", tabContent: [] },
+    { tabTitle: "Categories", tabContent: [] },
+    { tabTitle: "Things to do", tabContent: [] },
+    { tabTitle: "Travel tips & inspiration", tabContent: [] },
+    { tabTitle: "Airbnb-friendly apartments", tabContent: [] },
+];
+
+const navFooter = [
+    {
+        category: "Support",
+        links: [
+            { label: "Help Center", url: "#" },
+            { label: "AirCover", url: "#" },
+            { label: "Anti-discrimination", url: "#" },
+            { label: "Disability support", url: "#" },
+            { label: "Cancellation options", url: "#" },
+            { label: "Report a neighborhood concern", url: "#" },
+        ]
+    },
+    {
+        category: "Hosting",
+        links: [
+            { label: "Airbnb your home", url: "#" },
+            { label: "AirCover for Hosts", url: "#" },
+            { label: "Hosting resources", url: "#" },
+            { label: "Community forum", url: "#" },
+            { label: "Hosting responsibly", url: "#" },
+            { label: "Airbnb-friendly apartments", url: "#" },
+            { label: "Join a free Hosting class", url: "#" },
+            { label: "Find a co‑host", url: "#" },
+        ]
+    },
+    {
+        category: "Airbnb",
+        links: [
+            { label: "Newsroom", url: "#" },
+            { label: "New features", url: "#" },
+            { label: "Careers", url: "#" },
+            { label: "Investors", url: "#" },
+            { label: "Gift cards", url: "#" },
+            { label: "Airbnb.org emergency stays", url: "#" },
+        ]
+    }
+]
 
 const AirbnbCard = ({ id, title, rating, host, price, date, images }) => {
     return (
@@ -176,8 +232,8 @@ const AirbnbCard = ({ id, title, rating, host, price, date, images }) => {
 const Airbnb = () => {
 
     return (
-        <div className="max-w-6xl mx-auto">
-            <section className="flex align-center justify-between py-4 gap-4">
+        <>
+            <section className="max-w-6xl mx-auto flex align-center justify-between py-4 gap-4">
                 <a href="#home" className="grow-1">
                     <h1 className="text-4xl font-bold text-rose-400">airbnb</h1>
                 </a>
@@ -220,7 +276,9 @@ const Airbnb = () => {
                 </nav>
             </section>
 
-            <section className="flex flex-col gap-4 mt-8">
+            <hr className="border-gray-200 mt-8" />
+
+            <section className="max-w-6xl mx-auto flex flex-col gap-4">
                 <div className="flex align-center gap-4 py-4 items-center">
                     <nav className="overflow-x-hidden">
                         <ul className="flex items-center">
@@ -247,10 +305,95 @@ const Airbnb = () => {
                 <div className="py-10 text-center">LOADING</div>
             </section>
 
-            <section className="py-10">
-                nav3 & footer
-            </section>
-        </div>
+            <section className="py-10 bg-gray-100">
+                <div className="max-w-6xl mx-auto text-sm">
+                    <h2 className="font-bold text-xl">Inspiration for future getaways</h2>
+
+                    <nav className="mt-4">
+                        <ul className="flex border-b border-gray-300">
+                            {navDestinations.map((tab, index) => (
+                                <li key={index}>
+                                    <button className={classNames(
+                                        "py-3",
+                                        { "pl-0 pr-2 border-b-2": index == 0 },
+                                        { "px-2": index != 0 }
+                                    )}>{tab.tabTitle}</button>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+
+                    <div className="mt-4">
+                        {navDestinations.map((tab, index) => (
+                            <div className={classNames(
+                                "grid grid-cols-6 gap-4",
+                                { "hidden": index != 0 }
+                            )}>
+                                {tab.tabContent.map((subtab, index) => (
+                                    <a href={subtab.subtabUrl} key={index}>
+                                        <span className="font-semibold block">{subtab.subtabTitle}</span>
+                                        <span>{subtab.subtabContent}</span>
+                                    </a>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section >
+
+            <section className="py-10 bg-gray-100">
+                <div className="max-w-6xl mx-auto text-sm grid grid-cols-3 gap-4">
+                    {navFooter.map((item, index) => (
+                        <div key={index}>
+                            <h3 className="font-bold text-lg">{item.category}</h3>
+                            <nav className="mt-4">
+                                <ul>
+                                    {item.links.map((link, index) => (
+                                        <li key={index}>
+                                            <a className="block py-1" href={link.url}>{link.label}</a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </nav>
+                        </div>
+                    ))}
+                </div>
+            </section >
+
+            <section className="bg-gray-100">
+                <div className="max-w-6xl mx-auto text-sm flex items-center justify-between gap-4 border-t-1 border-gray-300 py-3">
+                    <nav>
+                        <ul className="flex items-center">
+                            <li>© 2025 Edalgrin</li>
+                            <li><a className="block py-2 px-3" href="#">Terms</a></li>
+                            <li><a className="block py-2 px-3" href="#">Sitemap</a></li>
+                            <li><a className="block py-2 px-3" href="#">Privacy</a></li>
+                            <li><a className="block py-2 px-3" href="#">Your privacy choices</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav>
+                        <ul className="flex items-center">
+                            <li>
+                                <button className="flex items-center px-3 py-2 gap-2">
+                                    <IoGlobeOutline />
+                                    <span>English (US)</span>
+                                </button>
+                            </li>
+                            <li>
+                                <button className="flex items-center px-3 py-2 gap-2">
+                                    <span>€</span>
+                                    <span>EUR</span>
+                                </button>
+                            </li>
+                            <li><a className="block p-1 text-2xl" href="#"><IoLogoFacebook /></a></li>
+                            <li><a className="block p-1 text-2xl" href="#"><IoLogoTwitter /></a></li>
+                            <li><a className="block p-1 text-2xl" href="#"><IoLogoInstagram /></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </section >
+        </>
     );
 };
 
