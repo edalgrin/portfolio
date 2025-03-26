@@ -1,5 +1,70 @@
 @import "tailwindcss";
 
 button {
-    //cursor: pointer;
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+}
+
+html {
+    scroll-timeline: --page-scroll block;
+}
+
+.scroll-hide {
+    animation: scroll-hide auto linear forwards;
+    animation-timeline: --page-scroll;
+}
+
+@keyframes scroll-hide {
+
+    1%,
+    100% {
+        display: none;
+    }
+}
+
+
+.scroll-show {
+    animation: scroll-show auto linear forwards;
+    animation-timeline: --page-scroll;
+}
+
+@keyframes scroll-show {
+    0% {
+        display: none;
+    }
+
+    1%,
+    100% {
+        display: block;
+    }
+}
+
+.scroll-shadow {
+    animation: scroll-shadow auto linear forwards;
+    animation-timeline: --page-scroll;
+}
+
+@keyframes scroll-shadow {
+
+    1%,
+    100% {
+        box-shadow: 0 1px 15px lightgrey;
+    }
+}
+
+.airbnb-form {
+    inline-size: 700px;
+    animation: scroll-width auto linear forwards;
+    animation-timeline: --page-scroll;
+}
+
+@keyframes scroll-width {
+
+    1%,
+    100% {
+        width: 360px;
+    }
 }
