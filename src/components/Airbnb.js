@@ -14,47 +14,48 @@ import {
     IoLogoTwitter,
     IoLogoInstagram,
     IoArrowForward,
+    IoSyncCircle,
 } from "react-icons/io5";
 
 const navCategories = [
     {
-        icon: <IoHomeOutline />,
+        icon: <IoHomeOutline aria-hidden="true" />,
         category: "Cabins"
     },
     {
-        icon: <IoHomeOutline />,
+        icon: <IoHomeOutline aria-hidden="true" />,
         category: "Icons"
     },
     {
-        icon: <IoHomeOutline />,
+        icon: <IoHomeOutline aria-hidden="true" />,
         category: "Amazing views"
     },
     {
-        icon: <IoHomeOutline />,
+        icon: <IoHomeOutline aria-hidden="true" />,
         category: "OMG!"
     },
     {
-        icon: <IoHomeOutline />,
+        icon: <IoHomeOutline aria-hidden="true" />,
         category: "Bed & breakfasts"
     },
     {
-        icon: <IoHomeOutline />,
+        icon: <IoHomeOutline aria-hidden="true" />,
         category: "Beach"
     },
     {
-        icon: <IoHomeOutline />,
+        icon: <IoHomeOutline aria-hidden="true" />,
         category: "Ski-in/out"
     },
     {
-        icon: <IoHomeOutline />,
+        icon: <IoHomeOutline aria-hidden="true" />,
         category: "Treehouses"
     },
     {
-        icon: <IoHomeOutline />,
+        icon: <IoHomeOutline aria-hidden="true" />,
         category: "Countryside"
     },
     {
-        icon: <IoHomeOutline />,
+        icon: <IoHomeOutline aria-hidden="true" />,
         category: "Castles"
     }
 ]
@@ -280,8 +281,8 @@ const AirbnbCard = ({ id, title, rating, host, price, date, images }) => {
                 <span className="font-semibold">{price} €</span>
                 <span>night</span>
             </p>
-            <a href={`#more${id}`} className="group rounded-lg before:absolute before:inset-0 before:rounded-xl before:content-['']">
-                <span className="hidden group-focus:block mt-2 bg-rose-400 text-white py-2 px-4 rounded-lg text-center">View more</span>
+            <a href={`#more${id}`} aria-label="View more" className="group rounded-lg before:absolute before:inset-0 before:rounded-xl before:content-['']">
+                <span aria-hidden="true" className="hidden group-focus-visible:block mt-2 bg-rose-400 text-white py-2 px-4 rounded-lg text-center">View more</span>
             </a>
         </div>
     )
@@ -299,112 +300,126 @@ const handleTabButton = () => {
     alert("Change the tab");
 }
 
-
-
-const Airbnb = () => {
-
+const Header = () => {
     return (
-        <>
-            <div className="scroll-shadow fixed top-0 inset-x-0 bg-white z-2 ">
-                <section className="max-w-7xl px-3 mx-auto flex flex-wrap lg:flex-nowrap items-center justify-between py-6 gap-4">
-                    <a href="#home" className="lg:pr-30">
-                        <h1 className="text-2xl font-bold text-rose-400">/\ airbnb</h1>
-                    </a>
+        <header className="shadow-onscroll fixed top-0 inset-x-0 bg-white z-2 ">
+            <section className="max-w-7xl px-3 mx-auto flex items-center justify-between py-3 lg:py-6 gap-1 sm:gap-4">
+                <a href="#home" className="flex-grow-1 md:flex-grow-0 lg:pr-30">
+                    <h1 className="text-2xl font-bold text-rose-400">
+                        <span aria-hidden="true">/\</span>
+                        <span>airbnb</span>
+                    </h1>
+                </a>
 
-                    <nav className="lg:order-1">
-                        <ul className="flex gap-4 items-center">
-                            <li className="hidden sm:block"><a href="#rent">Airbnb your home</a></li>
-                            <li><button className="p-2 border rounded-full text-2xl"><IoGlobeOutline /></button></li>
-                            <li><button className="p-2 border rounded-full text-2xl"><IoPersonCircleSharp /></button></li>
+                <nav className="md:order-1">
+                    <ul className="flex gap-1 sm:gap-4 items-center">
+                        <li className="hidden sm:block"><a href="#rent" className="text-nowrap">Airbnb your home</a></li>
+                        <li><button aria-label="Open language menu" className="p-2 border rounded-full text-2xl"><IoGlobeOutline aria-hidden="true" /></button></li>
+                        <li><button aria-label="Open user menu" className="p-2 border rounded-full text-2xl"><IoPersonCircleSharp aria-hidden="true" /></button></li>
+                    </ul>
+                </nav>
+
+                <div className="flex flex-col items-center gap-4">
+                    <div className="hidden lg:flex lg:hidden-onscroll gap-4">
+                        <button className="px-4 py-2">Homes</button>
+                        <button className="px-4 py-2">Experiences</button>
+                    </div>
+
+                    <form className="airbnb-form flex rounded-full border border-gray-200 shadow-md items-center">
+                        <label className="hidden md:flex flex-col py-2 px-4 relative after:absolute after:inset-y-2 after:right-0 after:content-[''] after:border-r-1 after:border-gray-300">
+                            <span className="font-semibold text-xs">
+                                <span className="hidden lg:block lg:hidden-onscroll">Where</span>
+                                <span className="lg:block-onscroll">Anywhere</span>
+                            </span>
+                            <input className="hidden lg:block lg:hidden-onscroll text-sm field-sizing-content" onClick={() => { handleInputClick(); }} type="text" placeholder="Seach destination" />
+                        </label>
+                        <label className="hidden md:flex flex-col py-2 px-4 relative after:absolute after:inset-y-2 after:right-0 after:content-[''] after:border-r-1 after:border-gray-300">
+                            <span className="font-semibold text-xs">
+                                <span className="hidden lg:block lg:hidden-onscroll">Check in</span>
+                                <span className="lg:block-onscroll">Any week</span>
+                            </span>
+                            <input className="hidden lg:block lg:hidden-onscroll text-sm field-sizing-content" onClick={() => { handleInputClick(); }} type="text" placeholder="Add dates" />
+                        </label>
+                        <label className="hidden lg:flex lg:hidden-onscroll flex-col py-2 px-4 relative after:absolute after:inset-y-2 after:right-0 after:content-[''] after:border-r-1 after:border-gray-300">
+                            <span className="font-semibold text-xs">Check out</span>
+                            <input className="text-sm field-sizing-content" onClick={() => { handleInputClick(); }} type="text" placeholder="Add dates" />
+                        </label>
+                        <label className="hidden md:flex flex-col py-2 px-4">
+                            <span className="hidden lg:block lg:hidden-onscroll font-semibold text-xs">Who</span>
+                            <input className="text-sm field-sizing-content" onClick={() => { handleInputClick(); }} type="text" placeholder="Add guests" />
+                        </label>
+                        <button aria-label="Search" className="p-3 bg-rose-400 text-white rounded-full shrink-0 text-xl md:m-1 lg:m-2">
+                            <IoSearchOutline aria-hidden="true" />
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <hr className="border-gray-200" />
+
+            <section className="max-w-7xl px-3 mx-auto flex flex-col gap-4">
+                <div className="flex align-center gap-4 items-center">
+                    <nav className="overflow-x-hidden">
+                        <ul className="flex items-center">
+                            {navCategories.map((category, index) => (
+                                <li key={index} className="shrink-0">
+                                    <button className="flex flex-col items-center gap-2 min-w-15 sm:min-w-30 py-3 lg:py-5">
+                                        {category.icon}
+                                        <span className="text-xs">{category.category}</span>
+                                    </button>
+                                </li>
+                            ))}
                         </ul>
                     </nav>
 
-                    <div className="flex flex-col items-center gap-4">
-                        <div className="scroll-hide flex gap-4">
-                            <button className="px-4 py-2">Homes</button>
-                            <button className="px-4 py-2">Experiences</button>
-                        </div>
+                    <button aria-label="Filter" className="flex items-center justify-center gap-2 p-3 sm:px-4 sm:py-2 border rounded-full sm:rounded-lg">
+                        <IoOptions aria-hidden="true" />
+                        <span aria-hidden="true" className="hidden sm:block">Filter</span>
+                    </button>
+                </div>
+            </section>
+        </header>
+    )
+}
 
-                        <form className="airbnb-form flex rounded-full border border-gray-200 shadow-md items-center">
-                            <label className="flex flex-col py-2 px-5 relative after:absolute after:inset-y-2 after:right-0 after:content-[''] after:border-r-1 after:border-gray-300">
-                                <span className="font-semibold text-xs">
-                                    <span className="scroll-hide">Where</span>
-                                    <span className="scroll-show">Anywhere</span>
-                                </span>
-                                <input className="scroll-hide text-sm" onClick={() => { handleInputClick(); }} type="text" placeholder="Seach destination" />
-                            </label>
-                            <label className="flex flex-col py-2 px-5 relative after:absolute after:inset-y-2 after:right-0 after:content-[''] after:border-r-1 after:border-gray-300">
-                                <span className="font-semibold text-xs">
-                                    <span className="scroll-hide">Where</span>
-                                    <span className="scroll-show">Anywhere</span>
-                                </span>
-                                <input className="scroll-hide text-sm" onClick={() => { handleInputClick(); }} type="text" placeholder="Add dates" />
-                            </label>
-                            <label className="scroll-hide flex flex-col py-2 px-5 relative after:absolute after:inset-y-2 after:right-0 after:content-[''] after:border-r-1 after:border-gray-300">
-                                <span className="font-semibold text-xs">Check out</span>
-                                <input className="text-sm" onClick={() => { handleInputClick(); }} type="text" placeholder="Add dates" />
-                            </label>
-                            <label className="flex flex-col py-2 px-5">
-                                <span className="scroll-hide font-semibold text-xs">Who</span>
-                                <input className="text-sm" onClick={() => { handleInputClick(); }} type="text" placeholder="Add guests" />
-                            </label>
-                            <button className="p-3 bg-rose-400 text-white rounded-full shrink-0 text-xl m-2">
-                                <IoSearchOutline />
-                            </button>
-                        </form>
-                    </div>
-                </section>
-
-                <hr className="border-gray-200" />
-
-                <section className="max-w-7xl mx-auto flex flex-col gap-4">
-                    <div className="flex align-center gap-4 items-center">
-                        <nav className="overflow-x-hidden">
-                            <ul className="flex items-center">
-                                {navCategories.map((category, index) => (
-                                    <li key={index} className="shrink-0">
-                                        <button className="flex flex-col items-center gap-2 min-w-15 sm:min-w-30 py-5">
-                                            {category.icon}
-                                            <span className="text-xs">{category.category}</span>
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
-                        </nav>
-
-                        <button className="flex items-center justify-center gap-2 px-4 py-2 border rounded-lg">
-                            <IoOptions />
-                            <span>Filter</span>
-                        </button>
-                    </div>
-                </section>
-            </div>
-
-            <section className="max-w-7xl px-3 mx-auto mt-70">
+const Main = () => {
+    return (
+        <main id="content">
+            <section className="max-w-7xl px-3 mx-auto mt-40 lg:mt-70 mb-10">
                 <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {cards.map((card, index) => (
                         <AirbnbCard key={index} {...card} />
                     ))}
                 </div>
-                <div className="py-10 text-center">LOADING</div>
+                <div className="py-10 flex items-center justify-center gap-3 animate-pulse hidden">
+                    <span className="font-bold">LOADING</span>
+                    <IoSyncCircle aria-hidden="true" className="text-2xl animate-spin" />
+                </div>
             </section>
 
             <section className="py-10 bg-gray-100">
                 <div className="max-w-7xl px-3 mx-auto text-sm">
                     <h2 className="font-bold text-xl">Inspiration for future getaways</h2>
 
-                    <nav className="mt-4 pr-10 relative">
-                        <button onClick={() => { handleCarouselButton() }} className="absolute top-1 right-0 p-2 border border-gray-300 bg-white rounded-full text-xl lg:hidden">
-                            <IoArrowForward />
+                    <nav className="mt-4 pr-10 flex items-center gap-3">
+                        <button aria-label="" onClick={() => { handleCarouselButton() }} className="bg-red-100 absolute top-1 right-0 p-2 border border-gray-300 bg-white rounded-full text-xl lg:hidden">
+                            <IoArrowForward aria-hidden="true" />
                         </button>
+
                         <ul className="flex border-b border-gray-300 overflow-x-hidden">
                             {navDestinations.map((tab, index) => (
                                 <li key={index} className="shrink-0">
-                                    <button className={classNames(
-                                        "py-3",
-                                        { "pl-0 pr-2 border-b-2": index == 0 },
-                                        { "px-2": index != 0 }
-                                    )}
+                                    <button
+                                        role="tab"
+                                        aria-selected={index == 0}
+                                        aria-controls={`panel-${index}`}
+                                        id={`tab-${index}`}
+                                        tabindex={index}
+                                        className={classNames(
+                                            "py-3",
+                                            { "pl-0 pr-2 border-b-2": index == 0 },
+                                            { "px-2": index != 0 }
+                                        )}
                                         onClick={() => { handleTabButton() }}>{tab.tabTitle}</button>
                                 </li>
                             ))}
@@ -413,7 +428,7 @@ const Airbnb = () => {
 
                     <div className="mt-4">
                         {navDestinations.map((tab, index) => (
-                            <div key={index} className={classNames(
+                            <div key={index} id={`panel-${index}`} role="tabpanel" tabindex="0" aria-labelledby={`tab-${index}`} className={classNames(
                                 "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4",
                                 { "hidden": index != 0 }
                             )}>
@@ -428,7 +443,13 @@ const Airbnb = () => {
                     </div>
                 </div>
             </section >
+        </main>
+    )
+}
 
+const Footer = () => {
+    return (
+        <footer>
             <section className="py-10 bg-gray-100">
                 <div className="max-w-7xl px-3 mx-auto text-sm sm:grid sm:grid-cols-3 sm:gap-4">
                     {navFooter.map((item, index) => (
@@ -482,6 +503,17 @@ const Airbnb = () => {
                     </nav>
                 </div>
             </section >
+        </footer>
+    )
+}
+
+
+const Airbnb = () => {
+    return (
+        <>
+            <Header />
+            <Main />
+            <Footer />
         </>
     );
 };
