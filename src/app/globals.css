@@ -1,7 +1,40 @@
 @import "tailwindcss";
 
+body {
+    @apply text-gray-700 bg-white dark:bg-gray-800 dark:text-white;
+}
+
 button {
     @apply cursor-pointer;
+}
+
+a {
+    @apply hover:underline;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        color-scheme: dark;
+    }
+}
+
+@layer components {
+    .container-7xl {
+        @apply max-w-7xl px-3 mx-auto;
+    }
+
+    .btn-1,
+    .btn-2 {
+        @apply duration-300 ease-in-out;
+    }
+
+    .btn-1 {
+        @apply bg-rose-400 text-white hover:bg-rose-500;
+    }
+
+    .btn-2 {
+        @apply bg-white border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700;
+    }
 }
 
 @utility hidden-onscroll {
