@@ -1,5 +1,5 @@
 "use client";
-//import { useState } from "react";
+import { useState, useEffect } from "react";
 //import classNames from "classnames";
 import classNames from "classnames";
 import {
@@ -59,99 +59,6 @@ const navCategories = [
     icon: <IoHomeOutline aria-hidden="true" />,
     category: "Castles",
   },
-];
-
-const houses = [
-    {
-      id: "1",
-      title: "San Martino in Badia, Italia",
-      rating: 5.0,
-      host: "Hosted by a business",
-      price: 336,
-      date: "Apr 12 - 17",
-      images: [
-        "https://picsum.photos/300.jpg",
-        "https://picsum.photos/300.jpg",
-        "https://picsum.photos/300.jpg",
-      ],
-    },
-    {
-      id: "2",
-      title: "San Martino in Badia, Italia",
-      rating: 5.0,
-      host: "Hosted by a business",
-      price: 336,
-      date: "Apr 12 - 17",
-      images: [
-        "https://picsum.photos/300.jpg",
-      ],
-    },
-    {
-      id: "3",
-      title: "San Martino in Badia, Italia",
-      rating: 5.0,
-      host: "Hosted by a business",
-      price: 336,
-      date: "Apr 12 - 17",
-      images: [
-        "https://picsum.photos/300.jpg",
-      ],
-    },
-    {
-      id: "4",
-      title: "San Martino in Badia, Italia",
-      rating: 5.0,
-      host: "Hosted by a business",
-      price: 336,
-      date: "Apr 12 - 17",
-      images: [
-        "https://picsum.photos/300.jpg",
-      ],
-    },
-    {
-      id: "1",
-      title: "San Martino in Badia, Italia",
-      rating: 5.0,
-      host: "Hosted by a business",
-      price: 336,
-      date: "Apr 12 - 17",
-      images: [
-        "https://picsum.photos/300.jpg",
-      ],
-    },
-    {
-      id: "2",
-      title: "San Martino in Badia, Italia",
-      rating: 5.0,
-      host: "Hosted by a business",
-      price: 336,
-      date: "Apr 12 - 17",
-      images: [
-        "https://picsum.photos/300.jpg",
-      ],
-    },
-    {
-      id: "3",
-      title: "San Martino in Badia, Italia",
-      rating: 5.0,
-      host: "Hosted by a business",
-      price: 336,
-      date: "Apr 12 - 17",
-      images: [
-        "https://picsum.photos/300.jpg",
-      ],
-    },
-    {
-      id: "4",
-      title: "San Martino in Badia, Italia",
-      rating: 5.0,
-      host: "Hosted by a business",
-      price: 336,
-      date: "Apr 12 - 17",
-      images: [
-        "https://picsum.photos/300.jpg",
-      ],
-    },
 ];
 
 const navDestinations = [
@@ -260,36 +167,36 @@ const navFooter = [
   {
     category: "Support",
     links: [
-      { label: "Help Center", url: "#" },
-      { label: "AirCover", url: "#" },
-      { label: "Anti-discrimination", url: "#" },
-      { label: "Disability support", url: "#" },
-      { label: "Cancellation options", url: "#" },
-      { label: "Report a neighborhood concern", url: "#" },
+      { label: "Help Center", url: "#Help" },
+      { label: "AirCover", url: "#AirCover" },
+      { label: "Anti-discrimination", url: "#Anti" },
+      { label: "Disability support", url: "#Disability" },
+      { label: "Cancellation options", url: "#Cancellation" },
+      { label: "Report a neighborhood concern", url: "#Report" },
     ],
   },
   {
     category: "Hosting",
     links: [
-      { label: "Airbnb your home", url: "#" },
-      { label: "AirCover for Hosts", url: "#" },
-      { label: "Hosting resources", url: "#" },
-      { label: "Community forum", url: "#" },
-      { label: "Hosting responsibly", url: "#" },
-      { label: "Airbnb-friendly apartments", url: "#" },
-      { label: "Join a free Hosting class", url: "#" },
-      { label: "Find a co‑host", url: "#" },
+      { label: "Airbnb your home", url: "#Airbnb" },
+      { label: "AirCover for Hosts", url: "#AirCover" },
+      { label: "Hosting resources", url: "#Hosting" },
+      { label: "Community forum", url: "#Community" },
+      { label: "Hosting responsibly", url: "#Hosting" },
+      { label: "Airbnb-friendly apartments", url: "#Airbnb-friendly" },
+      { label: "Join a free Hosting class", url: "#Join" },
+      { label: "Find a co‑host", url: "#Find" },
     ],
   },
   {
     category: "Airbnb",
     links: [
-      { label: "Newsroom", url: "#" },
-      { label: "New features", url: "#" },
-      { label: "Careers", url: "#" },
-      { label: "Investors", url: "#" },
-      { label: "Gift houses", url: "#" },
-      { label: "Airbnb.org emergency stays", url: "#" },
+      { label: "Newsroom", url: "#Newsroom" },
+      { label: "New features", url: "#New" },
+      { label: "Careers", url: "#Careers" },
+      { label: "Investors", url: "#Investors" },
+      { label: "Gift houses", url: "#Gift" },
+      { label: "Airbnb.org emergency stays", url: "#Airbnb.org" },
     ],
   },
 ];
@@ -314,13 +221,15 @@ const handleTabButton = () => {
   alert("Change the tab");
 };
 
-const Card = ({ id, title, rating, host, price, date, images }) => {
+const Card = ({ id, title, rating, host, price, date, images, favorite }) => {
   return (
     <div className="relative text-sm">
       <div className="flex justify-between items-center absolute top-3 left-3 right-3">
-        <span className="font-semibold bg-white dark:bg-gray-800 px-2 py-1 shadow-md rounded-full">
-          Guest favorite
-        </span>
+        {favorite && (
+          <span className="font-semibold bg-white dark:bg-gray-800 px-2 py-1 shadow-md rounded-full">
+            Guest favorite
+          </span>
+        )}
         <button className="btn-2 rounded-full p-3 text-xl z-1">
           <IoHeartOutline />
         </button>
@@ -565,106 +474,6 @@ const Header = () => {
   );
 };
 
-const Main = () => {
-  return (
-    <main id="content">
-      <section className="container-7xl mt-40 lg:mt-70 mb-10">
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {houses.map((card, index) => (
-            <Card key={index} {...card} />
-          ))}
-        </div>
-
-        <div className="py-10 flex items-center justify-center gap-3 animate-pulse hidden">
-          <span className="font-bold">LOADING</span>
-          <IoSyncCircle aria-hidden="true" className="text-2xl animate-spin" />
-        </div>
-      </section>
-
-      <section className="py-10 bg-gray-100 dark:bg-gray-700">
-        <div className="container-7xl text-sm">
-          <h2 className="font-bold text-xl">Inspiration for future getaways</h2>
-
-          <nav className="mt-4 flex items-center gap-3">
-            <button
-              aria-label=""
-              onClick={() => {
-                handleCarouselButton();
-              }}
-              className="btn-2 rounded-full p-2 text-xl hidden"
-            >
-              <IoArrowBack aria-hidden="true" />
-            </button>
-
-            <ul
-              role="tablist"
-              aria-label="Destinations"
-              className="flex border-b border-gray-300 overflow-x-hidden"
-            >
-              {navDestinations.map((tab, index) => (
-                <li key={index} className="shrink-0">
-                  <button
-                    role="tab"
-                    aria-selected={index == 0}
-                    aria-controls={`panel-${index}`}
-                    id={`link-tab-${index}`}
-                    tabIndex={index == 0 ? "0" : "-1"}
-                    className={classNames(
-                      "py-3",
-                      { "pl-0 pr-2 border-b-2": index == 0 },
-                      { "px-2": index != 0 }
-                    )}
-                    onClick={() => {
-                      handleTabButton();
-                    }}
-                  >
-                    {tab.tabTitle}
-                  </button>
-                </li>
-              ))}
-            </ul>
-
-            <button
-              aria-label="Next Destinations"
-              onClick={() => {
-                handleCarouselButton();
-              }}
-              className="btn-2 rounded-full p-2 text-xl lg:hidden"
-            >
-              <IoArrowForward aria-hidden="true" />
-            </button>
-          </nav>
-
-          <div className="mt-4">
-            {navDestinations.map((tab, index) => (
-              <div
-                key={index}
-                id={`link-panel-${index}`}
-                role="tabpanel"
-                tabIndex="0"
-                aria-labelledby={`link-tab-${index}`}
-                className={classNames(
-                  "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4",
-                  { hidden: index != 0 }
-                )}
-              >
-                {tab.tabContent.map((subtab, index) => (
-                  <a href={subtab.subtabUrl} key={index}>
-                    <span className="font-semibold block">
-                      {subtab.subtabTitle}
-                    </span>
-                    <span>{subtab.subtabContent}</span>
-                  </a>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </main>
-  );
-};
-
 const Footer = () => {
   return (
     <footer className="bg-gray-100 dark:bg-gray-700 text-sm">
@@ -758,7 +567,51 @@ const Footer = () => {
   );
 };
 
+const randomDate = () => {
+  const month = Math.random() > 0.5 ? "Apr" : "May";
+  const arrival = Math.ceil(Math.random() * 21);
+  const departure = arrival + Math.ceil(Math.random() * 11);
+  return `${month} ${arrival} - ${departure}`;
+};
+
+const randomImage = () => {
+  return `https://picsum.photos/id/${Math.ceil(Math.random() * 201)}/300.jpg`;
+};
+
 const Airbnb = () => {
+  const [houses, setHouses] = useState([]);
+
+  useEffect(() => {
+    /*
+    Normally I would fetch data from a server
+
+    fetch("serverUrl")
+        .then((response) => response.json())
+        .then((items) =>  setHouses(items))
+        .catch((error) => console.error("Error fetching:", error));
+    }, []);
+    
+    In this case I'm generating the data with a function
+    */
+
+    const newHouses = [...houses];
+
+    for (let i = 0; i < 8; i++) {
+      newHouses.push({
+        id: i,
+        title: i,
+        rating: (Math.random() * 1 + 4).toFixed(1),
+        host: `Hosted by ${i}`,
+        price: Math.ceil(Math.random() * 100 + 200),
+        date: randomDate(),
+        images: [randomImage()],
+        favorite: Math.random() > 0.5,
+      });
+    }
+
+    setHouses(newHouses);
+  }, []);
+
   return (
     <>
       <div className="fixed top-0 left-0 z-3">
@@ -767,7 +620,112 @@ const Airbnb = () => {
         </a>
       </div>
       <Header />
-      <Main />
+
+      <main id="content">
+        <section className="container-7xl mt-40 lg:mt-70 mb-10">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {houses.map((card, index) => (
+              <Card key={index} {...card} />
+            ))}
+          </div>
+
+          <div
+            className={classNames(
+              "py-10 flex items-center justify-center gap-3 animate-pulse",
+              { hidden: houses.length != 0 }
+            )}
+          >
+            <span className="font-bold">LOADING</span>
+            <IoSyncCircle
+              aria-hidden="true"
+              className="text-2xl animate-spin"
+            />
+          </div>
+        </section>
+
+        <section className="py-10 bg-gray-100 dark:bg-gray-700">
+          <div className="container-7xl text-sm">
+            <h2 className="font-bold text-xl">
+              Inspiration for future getaways
+            </h2>
+
+            <nav className="mt-4 flex items-center gap-3">
+              <button
+                aria-label=""
+                onClick={() => {
+                  handleCarouselButton();
+                }}
+                className="btn-2 rounded-full p-2 text-xl hidden"
+              >
+                <IoArrowBack aria-hidden="true" />
+              </button>
+
+              <ul
+                role="tablist"
+                aria-label="Destinations"
+                className="flex border-b border-gray-300 overflow-x-hidden"
+              >
+                {navDestinations.map((tab, index) => (
+                  <li key={index} className="shrink-0">
+                    <button
+                      role="tab"
+                      aria-selected={index == 0}
+                      aria-controls={`panel-${index}`}
+                      id={`link-tab-${index}`}
+                      tabIndex={index == 0 ? "0" : "-1"}
+                      className={classNames(
+                        "py-3",
+                        { "pl-0 pr-2 border-b-2": index == 0 },
+                        { "px-2": index != 0 }
+                      )}
+                      onClick={() => {
+                        handleTabButton();
+                      }}
+                    >
+                      {tab.tabTitle}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                aria-label="Next Destinations"
+                onClick={() => {
+                  handleCarouselButton();
+                }}
+                className="btn-2 rounded-full p-2 text-xl lg:hidden"
+              >
+                <IoArrowForward aria-hidden="true" />
+              </button>
+            </nav>
+
+            <div className="mt-4">
+              {navDestinations.map((tab, index) => (
+                <div
+                  key={index}
+                  id={`link-panel-${index}`}
+                  role="tabpanel"
+                  tabIndex="0"
+                  aria-labelledby={`link-tab-${index}`}
+                  className={classNames(
+                    "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4",
+                    { hidden: index != 0 }
+                  )}
+                >
+                  {tab.tabContent.map((subtab, index) => (
+                    <a href={subtab.subtabUrl} key={index}>
+                      <span className="font-semibold block">
+                        {subtab.subtabTitle}
+                      </span>
+                      <span>{subtab.subtabContent}</span>
+                    </a>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
       <Footer />
     </>
   );
